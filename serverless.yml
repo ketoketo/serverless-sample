@@ -48,7 +48,8 @@ provider:
 
 # you can add packaging information here
 package:
-  artifact: build/distributions/hello.zip
+  artifact: build/libs/aws-spring-cloud-function-gradle-1.0-SNAPSHOT-aws.jar
+#  artifact: build/distributions/hello.zip
   # 複数関数をアップロードする場合
 #  individually: true
 #    exclude:
@@ -58,8 +59,11 @@ functions:
   hello:
     role: lambdaCustRole # カスタムロールを適用
     handler: com.serverless.Handler
-    memorySize: 512
+    memorySize: 256
     timeout: 10
+    environment:
+      FUNCTION_NAME: function
+      MAIN_CLASS: com.serverless.MyFunction
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
