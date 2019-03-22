@@ -59,8 +59,8 @@ functions:
   hello:
     role: lambdaCustRole # カスタムロールを適用
     handler: com.serverless.Handler
-    memorySize: 256
-    timeout: 10
+    memorySize: 512
+    timeout: 15
     environment:
       FUNCTION_NAME: hello
       MAIN_CLASS: com.serverless.CloudFunctionApplication
