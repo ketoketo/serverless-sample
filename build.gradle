@@ -49,7 +49,7 @@ assemble.dependsOn = [shadowJar, thinJar]
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.serverless.MyFunction'
+        attributes 'Main-Class': 'com.serverless.CloudFunctionApplication'
     }
 }
 import com.github.jengelman.gradle.plugins.shadow.transformers.*
@@ -76,13 +76,14 @@ configurations {
 }
 
 dependencies {
-    compile("org.springframework.cloud:spring-cloud-starter-function-web:${springCloudFunctionVersion}")
+//    compile("org.springframework.cloud:spring-cloud-starter-function-web:${springCloudFunctionVersion}")
+//    compileOnly("com.amazonaws:aws-lambda-java-log4j:1.0.0")
+//    testCompile('org.springframework.boot:spring-boot-starter-test')
+//    compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.521'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-function-web', version: '2.0.1.RELEASE'
     compile("org.springframework.cloud:spring-cloud-function-adapter-aws:${springCloudFunctionVersion}")
     compileOnly("com.amazonaws:aws-lambda-java-events:${awsLambdaEventsVersion}")
     compileOnly("com.amazonaws:aws-lambda-java-core:${awsLambdaCoreVersion}")
-    compileOnly("com.amazonaws:aws-lambda-java-log4j:1.0.0")
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-//    compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.521'
 }
 
 //dependencies {
